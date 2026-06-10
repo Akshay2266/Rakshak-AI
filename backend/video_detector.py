@@ -17,14 +17,12 @@ while True:
     if not ret:
         break
 
-    # 2. Optimized Inference: 
-    # stream=True uses a generator (saves memory)
-    # verbose=False stops terminal spamming
-    # classes=[0] filters for people at the model level (massive speedup!)
+    # 2. Optimized Inference (People detection only)
     results = model(frame, stream=True, verbose=False, classes=[0])
 
     person_count = 0
 
+    # Process detections and draw bounding boxes
     for r in results:
         for box in r.boxes:
             person_count += 1
@@ -32,24 +30,52 @@ while True:
             # Extract coordinates safely
             x1, y1, x2, y2 = map(int, box.xyxy[0])
 
-            # Draw green bounding box
+            # Draw green bounding box for every detected person
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
-    # 3. Enhanced UI: Added a background contrast box for the text so it's readable
-    cv2.rectangle(frame, (10, 15), (280, 65), (0, 0, 0), -1)
+    # 3. Crowd Alert Logic (Evaluated every frame based on final person_count)
+    if person_count < 50:
+        status = "STATUS: SAFE"
+        status_color = (0, 255, 0)      # Green BGR
+    elif person_count < 100:
+        status = "STATUS: WARNING"
+        status_color = (0, 165, 255)    # Orange BGR
+    else:
+        status = "STATUS: DANGER"
+        status_color = (0, 0, 255)      # Red BGR
+
+    # 4. Enhanced UI Display
+    # Draw a semi-transparent black background box for metrics to look professional
+    cv2.rectangle(frame, (10, 10), (330, 105), (0, 0, 0), -1)
+    
+    # Line 1: Total People Count (Yellow for readability)
     cv2.putText(
         frame,
         f"People Count: {person_count}",
-        (20, 50),
+        (20, 45),
         cv2.FONT_HERSHEY_SIMPLEX,
-        1,
-        (0, 255, 255),  # Yellow text stands out better
+        0.8,
+        (0, 255, 255),
+        2,
+        cv2.LINE_AA
+    )
+    
+    # Line 2: Dynamic Alert Status (Color changes dynamically)
+    cv2.putText(
+        frame,
+        status,
+        (20, 85),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.8,
+        status_color,
         2,
         cv2.LINE_AA
     )
 
+    # Show the output window
     cv2.imshow("Rakshak AI", frame)
 
+    # Break loop with 'q' key
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 

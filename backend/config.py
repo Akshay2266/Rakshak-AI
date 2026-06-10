@@ -1,0 +1,4 @@
+SAFE_THRESHOLD = 50
+WARNING_THRESHOLD = 100
+
+MODEL_PATH = "models/yolov8n.pt"
