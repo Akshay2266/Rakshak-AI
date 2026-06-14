@@ -17,7 +17,7 @@ The project was developed as part of a hackathon challenge where multiple proble
 Traditional CCTV systems rely on security personnel continuously watching multiple camera feeds, which often leads to delayed responses and missed incidents.
 
 Rakshak AI acts as an intelligent monitoring assistant that automatically detects crowd gatherings, track intrusions, suspicious situations, and generates actionable alerts for security teams.
-
+![Rakshak AI](<project screenshots/dashboard_alert_cameras.png>)
 ---
 
 ## 🎯 Problem Statement
@@ -56,45 +56,36 @@ The system converts raw CCTV footage into actionable intelligence.
 
 ## 🏗️ System Architecture
 
-Railway CCTV Cameras
-↓
-Video Streams
-↓
-AI Processing Engine (YOLOv8)
-↓
-Threat Detection Layer
-↓
-Database Logging
-↓
-Analytics Engine
-↓
-Command Center Dashboard
-↓
-Security Personnel
+```mermaid
+flowchart TD
+    A[Railway CCTV Cameras]
+    B[Video Streams]
+    C[AI Processing Engine YOLOv8]
+    D[Threat Detection Layer]
+    E[Database Logging]
+    F[Analytics Engine]
+    G[Command Center Dashboard]
+    H[Security Personnel]
+
+    A --> B --> C --> D --> E --> F --> G --> H
+```
 
 ---
 
 ## 🔄 Project Workflow
 
-CCTV Camera
-      ↓
-RTSP Stream
-      ↓
-YOLOv8 Detection
-      ↓
-Crowd / Intrusion Analysis
-      ↓
-Threat Severity Engine
-      ↓
-Alert Generation
-      ↓
-Database Logging
-      ↓
-Heatmap Analytics
-      ↓
-Command Center Dashboard
-      ↓
-Security Team Response
+```mermaid
+flowchart TD
+    A[CCTV Camera] --> B[RTSP Stream]
+    B --> C[YOLOv8 Detection]
+    C --> D[Crowd / Intrusion Analysis]
+    D --> E[Threat Severity Engine]
+    E --> F[Alert Generation]
+    F --> G[Database Logging]
+    G --> H[Heatmap Analytics]
+    H --> I[Command Center Dashboard]
+    I --> J[Security Team Response]
+```
 
 ---
 
