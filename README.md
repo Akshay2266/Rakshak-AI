@@ -6,17 +6,18 @@ Smart Railway Safety Command Center for AI-based monitoring, crowd detection, in
 
 ## 📌 Introduction
 
-This is a great time to create a professional README because Rakshak AI is no longer just an idea—it is a working MVP.
+**Rakshak AI** is an AI-powered Railway Safety and Smart Surveillance platform developed by **Team Nexus Coders** for **FAR AWAY 2026**, an international hackathon organized by **Zuup**. As part of the competition, participants were provided with multiple challenge themes and tasked with building a working MVP that addresses a real-world problem. Our team chose the **Railway Safety & Smart Surveillance** theme due to its practical significance and the opportunity to leverage Artificial Intelligence for improving public safety in one of the busiest transportation environments.
 
-You received 5 hackathon themes and selected **Railway Safety & Smart Surveillance** because it solves a real-world problem affecting millions of passengers every day.
+Railway stations handle thousands of passengers every day, making continuous monitoring a complex and demanding task. Traditional surveillance systems rely heavily on human operators monitoring multiple CCTV feeds simultaneously, which can lead to delayed responses, missed incidents, and limited situational awareness during peak hours.
 
-Rakshak AI is an AI-powered Railway Safety and Surveillance Platform designed to improve passenger security, crowd management, and incident response inside railway stations.
+Rakshak AI aims to transform conventional CCTV infrastructure into an intelligent, real-time monitoring system. By combining Computer Vision, Artificial Intelligence, and Data Analytics, the platform continuously analyzes surveillance feeds to detect and track individuals, monitor crowd density, identify potential safety risks, detect unauthorized track intrusions, and generate instant alerts for security personnel.
 
-The project was developed as part of a hackathon challenge where multiple problem statements were provided. Out of the available themes, we selected **Railway Safety & Smart Surveillance** because railway stations handle thousands of passengers daily, making real-time monitoring difficult for human operators.
+The system also provides a centralized operational dashboard for live monitoring, incident management, crowd analytics, and actionable insights. Rather than simply recording events, Rakshak AI assists authorities in proactively identifying risks and responding to situations before they escalate.
 
-Traditional CCTV systems rely on security personnel continuously watching multiple camera feeds, which often leads to delayed responses and missed incidents.
+Through this project, Team Nexus Coders demonstrates how modern AI technologies can be applied to strengthen railway safety, improve operational efficiency, and contribute to the development of smarter and safer public transportation systems.
 
 Rakshak AI acts as an intelligent monitoring assistant that automatically detects crowd gatherings, track intrusions, suspicious situations, and generates actionable alerts for security teams.
+
 ![Rakshak AI](<project screenshots/dashboard_alert_cameras.png>)
 ---
 
@@ -268,12 +269,119 @@ This makes Rakshak AI a strong MVP for real-world railway safety operations and 
 
 ## ⚙️ Getting Started
 
+### Prerequisites
+
+Before running Rakshak AI, ensure the following software is installed on your system:
+
+* Python Python 3.14.0 or later
+* Git
+* Pip (Python Package Manager)
+* Webcam or CCTV Feed (Optional for testing)
+
+Verify your Python installation:
+
 ```bash
-pip install -r requirements.txt
-streamlit run frontend/dashboard.py
+python --version
 ```
 
 ---
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/mandal6359/Rakshak-AI.git
+cd Rakshak-AI
+```
+
+---
+
+### Create a Virtual Environment
+
+#### Windows (PowerShell)
+
+```bash
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
+
+#### Linux / macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+### Install Dependencies
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+---
+
+## 🚀 Quick Start
+
+### Launch the complete Rakshak AI platform using a single command:
+
+```bash
+python run.py
+```
+
+This command automatically:
+
+* Starts the Multi-Camera Monitoring Engine
+* Starts the Alert Cleanup Service
+* Launches the Streamlit Dashboard in your default browser
+
+Dashboard URL:
+
+```text
+http://localhost:8501
+```
+### Stopping the Application
+
+Press **CTRL + C** in the terminal running `run.py` to kill/stop all Rakshak AI services and terminate every active process.
+
+---
+
+## 🔧 Manual Startup (Optional)
+
+If you prefer running each service individually:
+
+### 1. Start the Multi-Camera Monitoring Engine
+
+```bash
+python backend/multi_camera_monitor.py
+```
+---
+
+### 2. Start the Dashboard
+
+```bash
+streamlit run frontend/dashboard.py
+```
+
+The dashboard will be available at:
+
+```text
+http://localhost:8501
+```
+
+---
+
+### 3. Start the Cleanup Service (Optional)
+
+```bash
+python backend/cleanup.py
+```
+
+This optional service automatically manages stored alert snapshots by removing older evidence images and helping maintain efficient disk usage.
+
+---
+
 
 <!-- ## 👨‍💻 Developed By
 
